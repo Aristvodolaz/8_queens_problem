@@ -1,20 +1,117 @@
-﻿// 8_queens_problem.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <time.h>
+#include <windows.h>
 
-#include <iostream>
+using namespace std;
 
-int main()
+
+const int n = 8;
+char chessBoard[n][n];
+
+
+void spleeping(int milliseconds)
 {
-    std::cout << "Hello World!\n";
+    clock_t time_end;
+    time_end = clock() + milliseconds * CLOCKS_PER_SEC / 1000;
+    while (clock() < time_end) {
+
+    }
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+void ChassBoardFalse() {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            chessBoard[i][j] = '0';
+        }
+    }
+}
+
+void ChaseBoard(char myChessBoard[][n], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << myChessBoard[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void HorizontPrint(int currentRow, int currentColumn) {
+    for (int i = currentRow, j = 0; j < n; j++) {
+        if (chessBoard[i][j] == '1') {
+            continue;
+        }
+        else {
+            chessBoard[i][j] = '*';
+        }
+    }
+}
+
+void VerticalPrint(int currentRow, int currentColumn) {
+    for (int i = 0, j = currentColumn; i < n; i++) {
+        if (chessBoard[i][j] == '1') {
+            continue;
+        }
+        else {
+            chessBoard[i][j] = '*';
+        }
+    }
+}
+
+void PrintQue(int currentRow, int currentColumn) {
+    for (int i = currentRow, j = currentColumn; i < n && j < n; i++, j++) {
+        if (chessBoard[i][j] == '1') {
+            continue;
+        }
+        else {
+            chessBoard[i][j] = '*';
+        }
+    }
+
+    for (int i = currentRow, j = currentColumn; i >= 0 && j >= 0; i--, j--) {
+        if (chessBoard[i][j] == '1') {
+            continue;
+        }
+        else {
+            chessBoard[i][j] = '*';
+        }
+    }
+
+    for (int i = currentRow, j = currentColumn; i >= 0 && j < n; i--, j++) {
+        if (chessBoard[i][j] == '1') {
+            continue;
+        }
+        else {
+            chessBoard[i][j] = '*';
+        }
+    }
+
+    for (int i = currentRow, j = currentColumn; i < n && j >= 0; i++, j--) {
+        if (chessBoard[i][j] == '1') {
+            continue;
+        }
+        else {
+            chessBoard[i][j] = '*';
+        }
+    }
+}
+
+int main() {
+    int firstInput;
+    int currentColumn;
+    int currentRow;
+
+    ChassBoardFalse();
+
+    for (int i = 0; i <= 7; i++) {
+        firstInput = i;
+        currentColumn = 0;
+        currentRow = n - firstInput - 1;
+
+
+    }
+
+    system("pause");
+    return 0;
+}
